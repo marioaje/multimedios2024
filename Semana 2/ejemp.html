@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ejemplos de CSS</title>
+<style>
+  /* Estilos para dispositivos móviles */
+  @media only screen and (max-width: 600px) {
+    body {
+      font-size: 14px;
+    }
+  }
+
+  /* Estilos para tabletas */
+  @media only screen and (min-width: 601px) and (max-width: 1024px) {
+    body {
+      font-size: 16px;
+    }
+  }
+
+  /* Estilos para pantallas grandes */
+  @media only screen and (min-width: 1025px) {
+    body {
+      font-size: 18px;
+    }
+  }
+
+  /* Animación CSS */
+  @keyframes mover {
+    0% { left: 0; }
+    50% { left: 50%; }
+    100% { left: 100%; }
+  }
+
+  .elemento {
+    position: relative;
+    animation: mover 3s infinite;
+  }
+
+  /* Transición CSS */
+  .transicion {
+    transition: background-color 0.5s ease-in-out;
+  }
+
+  .transicion:hover {
+    background-color: lightblue;
+  }
+
+  /* Botón Personalizado */
+  .boton-personalizado {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  .boton-personalizado:hover {
+    background-color: #45a049;
+  }
+
+  /* Tema Oscuro */
+  body.dark-mode {
+    background-color: #333;
+    color: #fff;
+  }
+
+  body.dark-mode a {
+    color: #ffa500;
+  }
+
+  /* Animación al Desplazar */
+  .scroll-element {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+
+  .scroll-element.animado {
+    opacity: 1;
+  }
+</style>
+</head>
+<body>
+  <h1>¡Ejemplos de CSS!</h1>
+
+  <div class="elemento">Animación CSS</div>
+
+  <div class="transicion">Transición CSS</div>
+
+  <button class="boton-personalizado">Botón Personalizado</button>
+
+  <p><a href="#" onclick="document.body.classList.toggle('dark-mode'); return false;">Tema Oscuro</a></p>
+
+  <div class="scroll-element">Animación al Desplazar</div>
+
+  <script>
+    // Activar animación al desplazar
+    window.addEventListener('scroll', function() {
+      var elemento = document.querySelector('.scroll-element');
+      var posicion = elemento.getBoundingClientRect().top;
+      var windowHeight = window.innerHeight;
+
+      if (posicion < windowHeight) {
+        elemento.classList.add('animado');
+      }
+    });
+  </script>
+</body>
+</html>

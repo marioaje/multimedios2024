@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flappy Bird</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #70c5ce;
+    position: relative;
+    overflow: hidden;
+  }
+  #bird {
+    position: absolute;
+    top: 50%;
+    left: 100px;
+    width: 30px;
+    height: 30px;
+    background-color: yellow;
+    border-radius: 50%;
+    transition: top 0.2s;
+  }
+  .pipe {
+    position: absolute;
+    width: 50px;
+    background-color: green;
+  }
+</style>
+</head>
+<body>
+<div id="bird"></div>
+<script>
+  const bird = document.getElementById('bird');
+  const gravity = 0.5;
+  let velocity = 0;
+  let position = 200;
+  let gameEnd = false;
+
+  // Iniciar el juego después de 10 segundos
+  setTimeout(function() {
+    gameLoop();
+  }, 5000);
+
+  function jump() {
+    velocity = -10;
+  }
+
+  document.addEventListener('keydown', function(event) {
+    if (event.code === 'Space') {
+      jump();
+    }
+  });
+
+  function gameLoop() {
+    if (gameEnd) return;
+    velocity += gravity;
+    position += velocity;
+    bird.style.top = position + 'px';
+
+    if (position > window.innerHeight || position < 0) {
+      endGame();
+    }
+
+    const pipes = document.querySelectorAll('.pipe');
+    pipes.forEach(function(pipe) {
+      pipe.style.left = parseInt(pipe.style.left) - 3 + 'px';
+      if (checkCollision(pipe)) {
+        endGame();
+      }
+      if (parseInt(pipe.style.left) < -50) {
+        pipe.parentNode.removeChild(pipe);
+      }
+    });
+
+    if (Math.random() < 0.02) {
+      createPipe();
+    }
+
+    requestAnimationFrame(gameLoop);
+  }
+
+  function createPipe() {
+    const pipeGap = 200;
+    const pipeHeight = Math.random() * 200 + 100;
+
+    const topPipe = document.createElement('div');
+    topPipe.classList.add('pipe');
+    topPipe.style.left = '500px';
+    topPipe.style.height = pipeHeight + 'px';
+    topPipe.style.bottom = 'calc(100% - ' + (pipeHeight + pipeGap) + 'px)';
+    document.body.appendChild(topPipe);
+
+    const bottomPipe = document.createElement('div');
+    bottomPipe.classList.add('pipe');
+    bottomPipe.style.left = '500px';
+    bottomPipe.style.height = 'calc(100% - ' + (pipeHeight + pipeGap) + 'px)';
+    document.body.appendChild(bottomPipe);
+  }
+
+  function checkCollision(pipe) {
+    const birdRect = bird.getBoundingClientRect();
+    const pipeRect = pipe.getBoundingClientRect();
+    return birdRect.right > pipeRect.left && birdRect.left < pipeRect.right && birdRect.bottom > pipeRect.top && birdRect.top < pipeRect.bottom;
+  }
+
+  function endGame() {
+    gameEnd = true;
+    alert('Game Over!');
+    //gameEnd = false;
+  }
+</script>
+</body>
+</html>
