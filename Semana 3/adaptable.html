@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adaptable</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+
+        .header{
+            background-color: rgb(172,90,214);
+            /* width: 100%; */
+            padding: 10px;
+            height: 150px;
+        }
+
+        .centro{
+            background-color: rgb(61, 214, 179);
+            /* width: 100%; */
+            height: 550px;
+        }
+
+        .menu{
+            background-color: aqua;
+            /* width: 33.33%; */
+            float: left;
+            height: 100%;
+        }
+
+        .article{
+            background-color: chocolate;
+            /* width: 33.33%; */
+            float: left;
+            height: 100%;
+        }
+
+        .info{
+           background-color: darkkhaki; 
+           /* width: 33.33%; */
+           float: left;
+           height: 100%;
+        }
+
+        .footer{
+            background-color: darkgray;
+            padding: 5px;
+            height: 100px;
+        }
+
+        .col1{
+            width: 8.33%;
+        }
+
+        .col2{
+            width: 16.66%;
+        }
+
+        .col3{
+            width: 25%;
+        }
+
+        .col6{
+            width: 50%;
+        }
+
+        .col12{
+            width: 100%;
+        }
+
+        .borderstilo{
+            border: 1px solid black;
+        }
+        /* 100/12
+        8.33333333333 */
+    </style>
+</head>
+<body>
+    <div class="maindashboard">
+        <div class="header col12 borderstilo">
+            <h1>Div del Nav o titulo</h1>
+        </div>
+        <div class="centro col12 borderstilo">
+            <div class="menu col3 borderstilo">
+                <ul>
+                    <li>Inicio</li>
+                    <li>Dashboard</li>
+                    <li>Usuarios</li>
+                    <li>Acerca</li>
+                    <li>Cerrar Session</li>
+                </ul>
+            </div>
+            <div class="article col6 borderstilo">
+                <p>
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat exercitationem reiciendis debitis voluptatibus quidem in sapiente delectus a, earum recusandae consectetur eos. Facere porro sapiente error veniam. Magni, dolorem! Praesentium.
+                </p>
+            </div>
+            <div class="info col3 borderstilo">
+                <p>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis, ullam nostrum. Cum suscipit animi, quos vitae deleniti asperiores modi repellendus tempore ab delectus. Dolorum, ut et esse placeat natus minus.
+                </p>
+            </div>
+        </div>
+        <div class="footer col12 borderstilo">
+            <h2>Footer</h2>
+        </div>
+    </div>
+</body>
+</html>
