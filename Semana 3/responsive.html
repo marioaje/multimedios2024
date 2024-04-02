@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+
+        .header{
+            background-color: rgb(172,90,214) ;
+            padding: 10px;
+            height: 150px;
+        }
+
+        .footer{
+            background-color: rgb(49,172,214);
+            padding: 5px;
+            height: 100px;
+        }
+        
+        .central{
+            background-color: brown;
+            
+        }
+
+        .menu{
+            background-color: chartreuse;
+            float: left;
+            
+        }
+
+        .informacion{
+            background-color: coral;
+            float: left;
+            
+        }
+
+        .eldivdeladerecha{
+            background-color: crimson;
+            float: left;
+            
+        }
+
+        .col1{
+            width: 8.33%;
+        }
+
+        .col3{
+            width: 25%;
+        }
+
+        .col6{
+            width: 50%;
+        }
+
+        .col12{
+            width: 100%;
+        }
+
+        .basepantalla{
+            height: 550px;
+        }
+
+        .estiloborder{
+            border: 1px solid black;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="contendorprinpal estiloborder">
+        <div class="header col12 estiloborder">
+            <h1>Titulo</h1>
+        </div>
+        <div class="central col12 basepantalla estiloborder">
+            <div class="menu col3 basepantalla estiloborder">
+                <ul>
+                    <li>Inicio</li>
+                    <li>Temporal</li>
+                    <li>Registro</li>
+                    <li>Acerca</li>
+                    <li>Nosotros</li>
+                </ul>
+            </div>
+            <div class="informacion col6 basepantalla estiloborder">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, obcaecati vel labore deserunt architecto illo nemo itaque tempora recusandae tempore sed delectus impedit rem omnis. Doloremque magni quaerat reiciendis ea?
+                </p>
+            </div>
+            <div class="eldivdeladerecha col3 basepantalla estiloborder">
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis nam ullam nobis eaque qui obcaecati rem consequatur vitae, corporis esse a adipisci odit. Temporibus et expedita iusto nobis, deserunt harum?
+                </p>
+            </div>
+        </div>
+        <div class="footer col12 estiloborder">
+            <h2>Pie de pagina</h2>
+        </div>
+    </div>    
+</body>
+</html>
