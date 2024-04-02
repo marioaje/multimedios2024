@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        a{
+            background-color: aqua;
+        }
+
+        a[target="_blank"]{
+            background-color: rgb(160, 84, 153);
+        }       
+        a[target="_top"] {
+            background-color:brown;
+        }
+
+        [title ~= "info"]{
+            background-color: blue;
+        }
+
+        /* busca la palabra exacta */
+        [title |= "info"]{
+            background-color: rgb(255, 68, 0);
+        }
+
+        /* busca la palabra dentro de una mas grande que coincida al inicio */
+        [title ^= "for"]{
+            background-color: rgb(41, 8, 69);
+        }
+
+        /* busca la palabra dentro de una mas grande que coincida al final */
+        [title $= "tion"]{
+            background-color: rgb(41, 8, 69);
+        }
+
+        /* busca la palabra dentro de una mas grande que coincida en cualquier lugar */
+        [title *= "infos"]{
+            background-color: rgb(32, 159, 23);
+        }        
+
+    </style>
+</head>
+<body>
+    <a href="https://google.com" target="_blank">Google</a>
+    <a href="https://wiki.com" >Wiki</a>
+    <a href="https://wiki.com" target="_top">Wiki</a>
+
+    <p title="informacion">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi ullam nam nesciunt dolores nostrum illo, cupiditate ipsam aliquid impedit maxime reiciendis consequatur eligendi dicta labore odio ratione porro cum at.
+    </p>
+    <p title="info">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus quisquam enim, eaque excepturi voluptate sint quibusdam quam necessitatibus cupiditate? Vitae ad odio tenetur nam ducimus illum nostrum, culpa quod eos.
+    </p>
+    <p title="information">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis esse vero quod sint molestias corrupti, et saepe minus odio voluptate dolorum, beatae non assumenda earum ipsa aut iusto. Vero, doloribus?
+    </p>
+    <p title="info-top">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus quisquam enim, eaque excepturi voluptate sint quibusdam quam necessitatibus cupiditate? Vitae ad odio tenetur nam ducimus illum nostrum, culpa quod eos.
+    </p>  
+    <p title="infos">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus quisquam enim, eaque excepturi voluptate sint quibusdam quam necessitatibus cupiditate? Vitae ad odio tenetur nam ducimus illum nostrum, culpa quod eos.
+    </p>      
+</body>
+</html>
