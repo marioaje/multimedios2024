@@ -1,0 +1,38 @@
+<div id="demo">
+
+</div>
+
+<script>
+
+    let edad = 19;
+
+    if (edad > 18){
+        console.log("es mayor")
+    }
+    else {
+        console.log("Es menor");
+    }
+
+
+//version ternaria
+    let edades = (edad > 18) ? "Es mayor" : "Es menor";
+    console.log(edades);
+
+
+
+    
+var cars = ["BMW", "Volvo", "Saab", "Ford", "Fiat", "Audi"];
+var text = "";
+var texto = "";
+var i;
+for (i = 0; i < cars.length; i++) {
+    text += cars[i] + "<br>";
+}
+
+for (const iterator of cars) {
+    texto += iterator + "<br>";
+}
+
+document.getElementById("demo").innerHTML = text;
+
+</script>

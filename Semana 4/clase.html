@@ -1,0 +1,29 @@
+<script>
+    class Carro{
+        constructor (color="", placa="", marca="", modelo=""){
+            this.color =color;
+            this.placa = placa;
+            this.marca = marca;
+            this.modelo = modelo;
+        }
+
+        //set
+        agregarColor(color){
+            this.color = color;
+        }
+        //, get
+        obtenerColor(){
+            return this.color;
+        }
+    }
+
+    const variableCarro = new Carro();
+    console.log(variableCarro);
+
+
+    const variableCarros = new Carro("blanco","123","Nissan", "Sentra");
+    console.log(variableCarros);
+    console.log(variableCarros.obtenerColor());
+    variableCarros.agregarColor("Azul"); // color
+    console.log(variableCarros.obtenerColor());
+</script>
