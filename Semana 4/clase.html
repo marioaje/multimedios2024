@@ -15,6 +15,10 @@
         obtenerColor(){
             return this.color;
         }
+
+        obtenerInfo(){
+            return 'color='+ this.color +', placa='+ this.placa +', marca='+ this.marca +', modelo='+ this.modelo +'';
+        }
     }
 
     const variableCarro = new Carro();
@@ -26,4 +30,5 @@
     console.log(variableCarros.obtenerColor());
     variableCarros.agregarColor("Azul"); // color
     console.log(variableCarros.obtenerColor());
+    console.log(variableCarros.obtenerInfo());
 </script>
