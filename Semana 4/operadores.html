@@ -1,0 +1,39 @@
+<div id="demo">
+
+</div>
+
+<script>
+    let edad = 8;
+
+    if (edad > 8){
+        console.log("Mayor a 8");
+    }
+    else{
+        console.log("Menor a 8");
+    }
+
+    let edades = (edad > 8) ? "Mayor a 8" : "Menor a 8";
+    console.log(edades);
+</script>
+
+
+<script>
+    var cars = ["BMW", "Volvo", "Saab", "Ford", "Fiat", "Audi"];
+    var text = "";
+    var i;
+    for (i = 0; i < cars.length; i++) {
+        text += cars[i] + "<br>";
+    }
+
+    for (const iterator of cars) {
+        text += iterator["texto"] + "<br>";
+    }
+    document.getElementById("demo").innerHTML = text;
+
+    // var texto = cars.map(function(car) { 
+    //     return "carro modelo" + car;
+    // });
+
+    //document.getElementById("demo").innerHTML = texto;
+
+    </script>

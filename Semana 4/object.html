@@ -1,0 +1,27 @@
+<script>
+
+    let cliente = {
+        nombre: "Mario",
+        apellido: "Jimenez",
+        edad: "40",
+        fecha:"12 septiembre",
+        telefono: "61383453",
+        activo: true,
+        dato: {
+            nombre:"",
+            datos:{
+
+            }
+        },
+        nombrecompleto : function (){
+            return this.nombre + " " + this.apellido;
+        }
+    }
+
+    console.log(cliente);
+
+    console.log(cliente.nombre);
+    console.log(cliente["nombre"]);
+
+ 
+</script>

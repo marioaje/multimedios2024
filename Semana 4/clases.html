@@ -1,0 +1,34 @@
+<script>
+    //Clase son funciones, aplicaciones, modularizar
+    class Clase{//lecciones informacion del curso
+        constructor(id, nombredelcurso, nombreprofersor, aula, cantidadestudiante, requisitos ){
+            this.id = id;
+            this.nombredelcurso = nombredelcurso;
+            this.nombreprofersor = nombreprofersor;
+            this.aula = aula;
+            this.cantidadestudiante = cantidadestudiante;
+            this.requisitos = requisitos;
+        }
+
+        //set y get
+        //insertar el id del curso
+        //set
+        insertarid(id) {
+            this.id = id;
+        }
+        //get
+        consultarid() {
+            return this.id;
+        }
+    }
+
+
+
+    const miClase = new Clase(0, "", "", "", "", "",0)
+
+    console.log(miClase);
+    miClase.insertarid(9);
+
+    console.log(miClase);
+
+</script>
