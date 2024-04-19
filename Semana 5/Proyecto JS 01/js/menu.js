@@ -26,7 +26,7 @@ let menu = `
                     >
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="ListaUsuarios.html">Lista</a>
-                        <a class="dropdown-item" href="#tab3Id">Another action</a>
+                        <a class="dropdown-item" href="CrearUsuarios.html">Crear</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#tab4Id">Action</a>
                     </div>

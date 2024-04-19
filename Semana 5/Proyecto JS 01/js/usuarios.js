@@ -1,6 +1,14 @@
-let datosTabla = document.querySelector('#datos');
+//Propiedades Inicio
+let datosTabla = document.querySelector('#datos');//Cuando es queryselector requiere el #
+let mensajesSistema =  document.querySelector('#mensajesSistema');
+let formulario = document.getElementById('formulario');//Cuando es id, no requiere el #
+let nombrePagina = document.title;
+let nombreModuloListar = "Usuarios";
+let nombreModuloCrear = "Crear Usuarios";
+
 let url = "https://paginas-web-cr.com/Api/apis/";
 let listar = "ListaUsuarios.php";
+let insertar = "InsertarUsuarios.php";
 // ocupo json
 // leer el api
 //https://paginas-web-cr.com/Api/apis/ListaUsuarios.php
@@ -10,7 +18,82 @@ let spinner = `
     <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
     <span role="status">Loading...</span>
 </button>`;
+//Propiedades Fin
 
+
+//Eventos Inicio
+if ( nombrePagina == nombreModuloCrear ){
+    formulario.addEventListener('submit', 
+    function(evento) {
+        evento.preventDefault();//evita que la pagina se recargue
+
+        let datos = new FormData(formulario);
+        
+        let datosEnviar = {
+            name: datos.get('name'),
+            password: datos.get('password'),
+            email: datos.get('email')
+        }
+
+        //url + insertar esto es la url del servicio concatenada
+        fetch( url + insertar,
+            {
+                method: 'POST',
+                body: JSON.stringify(datosEnviar)
+            } 
+        )
+        .then(respuesta=>respuesta.json())
+        .then( (datosrepuesta) => {
+            //console.log(datosrepuesta)
+            mensajeInsertar(datosrepuesta)
+        })
+        .catch(console.log)
+
+        //console.log(datosEnviar);
+        // apis/InsertarUsuarios.php
+        // { "name" : "marioaje", "password":"1234567890", "email":"marioaje@gmail.com" }     
+
+        //console.log(datos.get('email'));
+        //estos son iguales
+        //email = document.getElementById("email").value;
+       // alert("1");
+    })
+}
+
+//Eventos Fin
+
+
+//Metodos Inicio
+function mensajeInsertar(datos){
+    if(datos.code == 200){        
+        mensajesSistema.innerHTML = `<div
+                class="alert alert-success alert-dismissible fade show"
+                role="alert"
+            >
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="alert"
+                    aria-label="Close"
+                ></button>
+                <strong>Ingreso exitoso</strong>
+            </div>`;
+    }
+    else{
+        mensajesSistema.innerHTML = `<div
+                class="alert alert-warning alert-dismissible fade show"
+                role="alert"
+            >
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="alert"
+                    aria-label="Close"
+                ></button>
+                <strong>Correo duplicado</strong>
+            </div>`;
+    }
+}
 
 function cargarDatos(){
     loadspinner();
@@ -70,6 +153,9 @@ function mostrarDatos(datos){
 function loadspinner(){
     document.getElementById("spinnerload").innerHTML = spinner;
 }
+//Metodos Fin
 
 //Seccion de ejecucion de funciones
-cargarDatos();
+if (nombrePagina == nombreModuloListar ){
+    cargarDatos();
+}
