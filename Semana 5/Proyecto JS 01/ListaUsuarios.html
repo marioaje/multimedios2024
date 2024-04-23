@@ -35,6 +35,11 @@
                         class="row"
                     >
                     <h1>Informacion</h1>
+
+                    <div id="mensajesSistema">
+
+                    </div>                  
+                    
                     <div id="spinnerload"></div>
 
                                 
@@ -72,11 +77,185 @@
 
                 </div>
             </footer>
+
+
+                    <!-- Modal Body -->
+                    <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+                    <div
+                        class="modal fade"
+                        id="modalEditar"
+                        name ="modalEditar"
+                        tabindex="-1"
+                        data-bs-backdrop="static"
+                        data-bs-keyboard="false"
+                        
+                        role="dialog"
+                        aria-labelledby="modalTitleId"
+                        aria-hidden="true"
+                    >
+                        <div
+                            class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm"
+                            role="document"
+                        >
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="modalTitleId">
+                                        Modal Editar
+                                    </h5>
+                                    <button
+                                        type="button"
+                                        class="btn-close"
+                                        data-bs-dismiss="modal"
+                                        aria-label="Close"
+                                    ></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form id="formularioEditar">
+                                        <div class="mb-3">
+                                            <label for="" class="form-label">Id</label>
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                name="id"
+                                                id="id"
+                                                aria-describedby="helpId"
+                                                placeholder=""
+                                                hidden
+                                            />    
+                                            <span id="ideditar"></span>                                        
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <label for="" class="form-label">Nombre</label>                                            
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                name="name"
+                                                id="name"
+                                                aria-describedby="helpId"
+                                                placeholder="Ingrese su nombre"
+                                                required
+                                            />
+                                            <small id="helpId" class="form-text text-muted">Digita tu nombre</small>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="" class="form-label">Email</label>
+                                            <input
+                                                type="email"
+                                                class="form-control"
+                                                name="email"
+                                                id="email"
+                                                aria-describedby="helpId"
+                                                placeholder="Ingrese su correo"
+                                                disabled
+                                            />
+                                            <small id="helpId" class="form-text text-muted">Digita tu Email</small>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="" class="form-label">Password</label>
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                name="password"
+                                                id="password"
+                                                aria-describedby="helpId"
+                                                placeholder="Ingrese su password"
+                                                required
+                                            />
+                                            <small id="helpId" class="form-text text-muted">Digita tu password</small>
+                                        </div>                                                        
+                                        <div class="mb-3 ">
+                                            <button
+                                                type="submit"
+                                                class="btn btn-primary"
+                                            >
+                                                Guardar
+                                            </button>                                           
+                                            <button
+                                                type="button"
+                                                class="btn btn-secondary"
+                                                data-bs-dismiss="modal"
+                                            >
+                                                Close
+                                            </button>                                            
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+<!-- Modal trigger button -->
+<button
+    type="button"
+    class="btn btn-primary btn-lg"
+    data-bs-toggle="modal"
+    data-bs-target="#modalId"
+>
+    Launch
+</button>
+
+<!-- Modal Body -->
+<!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+<div
+    class="modal fade"
+    id="modalEliminar"
+    tabindex="-1"
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
+    
+    role="dialog"
+    aria-labelledby="modalTitleId"
+    aria-hidden="true"
+>
+    <div
+        class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm"
+        role="document"
+    >
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTitleId">
+                    Modal Eliminar
+                </h5>
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                ></button>
+            </div>
+            <div class="modal-body">
+                Usted va a a eliminar el elemento <span id="idEliminar"></span>
+                <input type="hidden" id="idEliminarModal">
+            </div>
+            <div class="modal-footer">
+                <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                >
+                    Close
+                </button>
+                <button type="button" class="btn btn-danger" onclick="modalEliminarConfirmacion()">Eliminar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
         </div>
         
         <!-- Seccion de archivos -->
         <script src="js/menu.js"></script>
-        <script src="js/usuarios.js"></script>
+
 
         <!-- Bootstrap JavaScript Libraries -->
         <script
@@ -90,5 +269,7 @@
             integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
             crossorigin="anonymous"
         ></script>
+        <script src="js/usuarios.js"></script>
+
     </body>
 </html>
