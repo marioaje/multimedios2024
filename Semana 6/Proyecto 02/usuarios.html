@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <title>Lista Usuarios</title>
+        <title>Listar Usuarios</title>
         <!-- Required meta tags -->
         <meta charset="utf-8" />
         <meta
@@ -35,38 +35,41 @@
                         class="row "
                     >
                         <h1>Lista de Usuarios</h1>
-                       
-<div
-    class="table-responsive"
->
 
-<div id="seccionspinner">
+                        <div
+                            class="table-responsive"
+                        >
 
-    
-</div>
+                        <div id="seccionspinner">
 
-    <table
-        class="table table-striped table-hover table-borderless table-primary align-middle"
-    >
-        <thead class="table-light">
-            <caption>
-                Usuarios
-            </caption>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Password</th>
-            </tr>
-        </thead>
-        <tbody class="table-group-divider" id="tablausuarios">
-   
-        </tbody>
-        <tfoot>
-            
-        </tfoot>
-    </table>
-</div>
+                            
+                        </div>
+                        <div id="mensajes">
+
+                        </div>
+                            <table
+                                class="table table-striped table-hover table-borderless table-primary align-middle"
+                            >
+                                <thead class="table-light">
+                                    <caption>
+                                        Usuarios
+                                    </caption>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Password</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="table-group-divider" id="tablausuarios">
+                        
+                                </tbody>
+                                <tfoot>
+                                    
+                                </tfoot>
+                            </table>
+                        </div>
 
 
 
@@ -82,6 +85,169 @@
                 </div>
             </footer>
         </div>
+
+
+
+<!-- Modal Body -->
+<!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+<div
+    class="modal fade"
+    id="modalEliminar"
+    name="modalEliminar"
+    tabindex="-1"
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
+    
+    role="dialog"
+    aria-labelledby="modalTitleId"
+    aria-hidden="true"
+>
+    <div
+        class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm"
+        role="document"
+    >
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTitleId">
+                    Eliminar
+                </h5>
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                ></button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="idEliminarModal">
+                Usted va a eliminar el registro: <span id="idEliminar"></span>
+            </div>
+            <div class="modal-footer">
+                <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                >
+                    Close
+                </button>
+                <button type="button" class="btn btn-danger" onclick="modalConfirmacionEliminar()">Eliminar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+        <!-- Modal Body -->
+<!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+<div
+class="modal fade"
+id="modalEdicion"
+name="modalEdicion"
+tabindex="-1"
+data-bs-backdrop="static"
+data-bs-keyboard="false"
+
+role="dialog"
+aria-labelledby="modalTitleId"
+aria-hidden="true"
+>
+<div
+    class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm"
+    role="document"
+>
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="modalTitleId">
+                Actualizar
+            </h5>
+            <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+            ></button>
+        </div>
+        <div class="modal-body">
+            
+
+            <form id="formularioEditar">
+                <div class="mb-3">
+                    <label for="" class="form-label">Id</label>
+                    <input type="hidden" id="id" name="id">
+                    <span id="idEditar"></span>
+                    
+                </div>                
+                <div class="mb-3">
+                    <label for="" class="form-label">Name</label>
+                    <input type="hidden" id="id" name="id">
+                    <input
+                        type="text"
+                        class="form-control"
+                        name="name"
+                        id="name"
+                        aria-describedby="helpId"
+                        placeholder=""
+                        required
+                    />
+                    <small id="helpId" class="form-text text-muted">Help text</small>
+                </div>
+                <div class="mb-3">
+                    <label for="" class="form-label">password</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        name="password"
+                        id="password"
+                        aria-describedby="helpId"
+                        placeholder=""
+                        required
+                    />
+                    <small id="helpId" class="form-text text-muted">Help text</small>
+                </div>
+                <div class="mb-3">
+                    <label for="" class="form-label">email</label>
+                    <input
+                        type="email"
+                        class="form-control"
+                        name="email"
+                        id="email"
+                        aria-describedby="helpId"
+                        placeholder=""
+                        required
+                        disabled
+                    />
+                    <small id="helpId" class="form-text text-muted">Help text</small>
+                </div>    
+                <div class="mb-3">
+                    
+                    <button
+                        type="submit"
+                        class="btn btn-primary"
+                    >
+                        Enviar
+                    </button>
+                    <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal"
+                    >
+                        Close
+                    </button>
+                    
+                </div>    
+            </form>
+
+
+
+        </div>
+        <div class="modal-footer">
+
+        </div>
+    </div>
+</div>
+</div>
+
         
         <!-- Bootstrap JavaScript Libraries -->
         <script

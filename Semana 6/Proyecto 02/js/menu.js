@@ -21,11 +21,11 @@ role="tablist"
         role="button"
         aria-haspopup="true"
         aria-expanded="false"
-        >Dropdown</a
+        >Usuarios</a
     >
     <div class="dropdown-menu">
-        <a class="dropdown-item" href="usuarios.html">Usuarios</a>
-        <a class="dropdown-item" href="#tab3Id">Another action</a>
+        <a class="dropdown-item" href="usuarios.html">Listar</a>
+        <a class="dropdown-item" href="usuarioscrear.html">Crear</a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="#tab4Id">Action</a>
     </div>
