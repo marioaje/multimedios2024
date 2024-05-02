@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="nombre">
+    <button onclick="obtenernombre()">Obtener nombre</button>
+    <div id="ejecutar">
+    </div>
+</body>
+</html>
+
+<script>
+let arreglo = [0,1,2,2,2,22,22,22,22];
+
+const arreglos = {
+    'nombre': 123234,
+}
+//Ejemplo local storage
+localStorage.setItem('arreglo', 'Datos');
+localStorage.setItem('arreglo2', 123);
+localStorage.setItem('arreglo3', arreglo);
+localStorage.setItem('arreglo4', arreglos);
+
+
+sessionStorage.setItem('arreglo', 'Datos');
+sessionStorage.setItem('arreglo2', 123);
+sessionStorage.setItem('arreglo3', arreglo);
+sessionStorage.setItem('arreglo4', arreglos);
+
+
+const arreglo3 = sessionStorage.getItem('arreglo2');
+console.log(arreglo3);
+
+
+
+let ejecutar = document.querySelector('#ejecutar');
+
+function obtenernombre(){
+    let nombre = document.getElementById('nombre').value;
+    nombre = escapeHTML(nombre);
+    console.log(nombre);
+    ejecutar.innerHTML = ejecutar;
+}
+
+
+function escapeHTML(text) {
+  var map = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;'
+  };
+  return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+}
+
+
+</script>

@@ -65,7 +65,7 @@ if (nombrePaagina == listarPagina){
     formularioEditar.addEventListener("submit",
         function(evento){
             evento.preventDefault();//evita la recarga de la pagina
-          
+
             let datos = new FormData(formularioEditar);
     
             let datosEnviar =
@@ -85,7 +85,7 @@ if (nombrePaagina == listarPagina){
             .then( repuesta=> repuesta.json() )
             .then ( (datosrepuestas) => {
                 editarDatos(datosrepuestas)
-              
+
             })
             .catch(console.log)
     
@@ -143,8 +143,6 @@ function pintardatos(objetodatos){
         }
     }
 
-
-
     document.getElementById("seccionspinner").innerHTML = "";
 }
 
@@ -188,7 +186,6 @@ function editar(datos){
     
     const modalEdicion = new bootstrap.Modal(document.getElementById("modalEdicion"));
     modalEdicion.show();
-
 
     document.getElementById("name").value = objeto.name;
     document.getElementById("email").value = objeto.email;
