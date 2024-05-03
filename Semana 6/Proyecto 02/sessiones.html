@@ -1,0 +1,24 @@
+<script>
+
+let datos = 31212;
+let nombre = 'Mario';
+let telefono = '1233112212222353656';
+///////////////////////llave y variable
+localStorage.setItem('datos',datos);
+localStorage.setItem('nombredeusuario',nombre);
+localStorage.setItem('soyeltelefono', telefono);
+
+sessionStorage.setItem('datos1',datos);
+
+const getdatos = localStorage.getItem('datos');
+const getdatos1 = sessionStorage.getItem('datos1');
+
+
+console.log(getdatos);
+console.log(getdatos1);
+
+
+const nombredeusuario = localStorage.getItem('nombredeusuario');
+console.log(nombredeusuario);
+
+</script>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'
+        https://apis.example.com;">
+    <title>Document</title>
+</head>
+<body>
+    
+        <input type="text" name="nombre" id="nombre">
+        <button onclick="agregar()">Salvar</button>
+    
+</body>
+</html>
+
+
+<script>
+
+//local solo es local, puedes verlo en todas las pestanas
+const getdatos = localStorage.getItem('datos');
+
+
+//solo sirve en la pestana invocado
+const getdatos1 = sessionStorage.getItem('datos1');
+
+
+console.log(getdatos);
+console.log(getdatos1);
+
+
+const nombredeusuario = localStorage.getItem('nombredeusuario');
+console.log(nombredeusuario);
+const soyeltelefono = localStorage.getItem('soyeltelefono');
+console.log(soyeltelefono);
+
+
+function escapeHTML(text) {
+  var map = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;'
+  };
+  return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+}
+
+function agregar(){
+    
+    let nombre = document.getElementById('nombre').value;
+    nombre = escapeHTML(nombre);
+    console.log(nombre);
+}
+</script>
