@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>JQuery</title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+
+        <!-- Bootstrap CSS v5.2.1 -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+            crossorigin="anonymous"
+        />
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    </head>
+    <script>
+
+
+let url = "https://paginas-web-cr.com/Api/apis/";
+let listar = "ListaUsuarios.php";
+let datosTabla = document.querySelector('#datosTabla');//Cuando es queryselector requiere el #
+
+        $(document).ready(function () {
+            // $("p").click(function (e) { 
+            //     $(this).hide();
+                
+            // });
+            cargarDatos();
+
+            $("#parrafo").click(function (e) { 
+                alert("click");
+                $(this).hide();
+            });
+
+            $(".clase").click(function (e) { 
+                test();
+            });
+
+            $("#botonprim").click(function (e) { 
+                $("#parrafo").show();
+                
+            });
+
+            $("#botonincluye").click(function (e) { 
+                $("#botonprimero").addClass("btn btn-primary");
+                
+            });
+
+            $("#botonremueve").click(function (e) { 
+                $("#botonprimero").removeClass("btn btn-primary");
+                
+            });
+
+        });
+
+        function test(){
+            alert("click test");
+        }
+
+
+function cargarDatos(){
+    // datosTabla.innerHTML = "";
+    // loadspinner();
+    
+    // //url + listar esto es la url del servicio concatenada
+    // fetch( url + listar )
+    // .then(respuesta=>respuesta.json())
+    // .then( (datosrepuesta) => {
+    //     //console.log(datosrepuesta)
+    //     mostrarDatos(datosrepuesta)
+    // })
+    // .catch(console.log)
+
+
+    $.ajax({
+        type: "POST",
+        url: url + listar,
+       // data: "data",
+        dataType: "json",
+        success: function (response) {
+            mostrarDatos(response);
+        },
+        beforeSend: function(jqXHR){
+            console.log("cargando datos");
+        },
+        complete: function(jqXHR){
+            console.log("complete");
+        },    
+        error: function (jqXHR, textStatus, errorThrow){
+            console.log(errorThrow);
+        }
+    });
+
+
+
+
+}
+
+
+
+function mostrarDatos(datos){
+    //console.log(datos);
+    
+    if(datos.code == 200){
+        for (const iterator of datos.data) {  
+        //onclick="editar('${iterator.id}', '${iterator.name}', '${iterator.password}', '${iterator.email}')"
+            datosTabla.innerHTML += `
+                <tr class="">
+                    <td>
+                    <a
+                        name=""
+                        id=""
+                        class="btn btn-success"
+                        onclick="editar('${encodeURIComponent(JSON.stringify(iterator))}')"
+                        role="button"
+                        ><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-edit"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" /><path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" /><path d="M16 5l3 3" /></svg></a
+                    >                    
+                    
+                    <a
+                        name=""
+                        id=""
+                        class="btn btn-danger"                        
+                        role="button"
+                        onclick="eliminar('${iterator.id}')"
+                        ><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-eraser"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M19 20h-10.5l-4.21 -4.3a1 1 0 0 1 0 -1.41l10 -10a1 1 0 0 1 1.41 0l5 5a1 1 0 0 1 0 1.41l-9.2 9.3" /><path d="M18 13.3l-6.3 -6.3" /></svg></a
+                    >
+                    </td>
+                    <td scope="row">${iterator.id}</td>
+                    <td>${iterator.name}</td>
+                    <td>${iterator.email}</td>
+                    <td>${iterator.password}</td>                    
+                </tr>
+                `;
+        }
+    }
+    else{
+        alert("Algo salio mal");
+    }
+
+    document.getElementById("spinnerload").innerHTML = "";
+}
+
+
+    </script>
+    <body>
+        <header>
+            <!-- place navbar here -->
+        </header>
+        <main>
+            <a
+                name="botonprim"
+                id="botonprim"
+                class="btn btn-primary"
+                href="#"
+                role="button"
+                >Button</a
+            >
+        
+            <a
+                name="botonprimero"
+                id="botonprimero"
+                class=""
+                href="#"
+                role="button"
+                >Button</a
+            >
+
+            <a
+                name="botonincluye"
+                id="botonincluye"
+                class="btn btn-success "
+                href="#"
+                role="button"
+                >Incluye CSS</a
+            >
+
+            <a
+                name="botonremueve"
+                id="botonremueve"
+                class="btn btn-danger "
+                href="#"
+                role="button"
+                >Remover CSS</a
+            >            
+            <p>
+                1-Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem enim vel asperiores tempora molestias repellendus quas impedit quam repudiandae laboriosam dolore maiores officiis hic repellat modi aliquam, cupiditate optio veritatis?
+            </p>
+            <p id="parrafo"> 
+               2-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est, odio vero. Eaque eveniet nam voluptas repellendus nesciunt laborum! Reprehenderit, autem. Nesciunt aspernatur reiciendis similique quibusdam at iusto minus, voluptate est?
+            </p>
+            <p>
+                3-orem ipsum dolor sit amet consectetur adipisicing elit. Veritatis numquam minus aut consectetur iure! Perspiciatis, fugit. Ipsam itaque dolores numquam exercitationem molestias veniam, aut eum, incidunt laudantium quod, reprehenderit esse.
+            </p>
+            <p class="clase">
+                4-Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias repudiandae est eum minus quia ratione omnis, repellat quos perspiciatis, totam dolorum ea a voluptas sed similique. Omnis sunt perferendis odit.
+            </p>
+
+            <div
+                class="table-responsive"
+            >
+                <table
+                    class="table table-primary"
+                >
+                    <thead>
+                        <tr>
+                            <th scope="col">Column 1</th>
+                            <th scope="col">Column 2</th>
+                            <th scope="col">Column 3</th>
+                        </tr>
+                    </thead>
+                    <tbody id="datosTabla">
+                        <!-- <tr class="">
+                            <td scope="row">R1C1</td>
+                            <td>R1C2</td>
+                            <td>R1C3</td>
+                        </tr>
+                        <tr class="">
+                            <td scope="row">Item</td>
+                            <td>Item</td>
+                            <td>Item</td>
+                        </tr> -->
+                    </tbody>
+                </table>
+            </div>
+            
+        </main>
+        <footer>
+            <!-- place footer here -->
+        </footer>
+        <!-- Bootstrap JavaScript Libraries -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+            crossorigin="anonymous"
+        ></script>
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+            integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+            crossorigin="anonymous"
+        ></script>
+    </body>
+</html>
