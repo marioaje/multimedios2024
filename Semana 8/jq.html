@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Title</title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+
+        <!-- Bootstrap CSS v5.2.1 -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+            crossorigin="anonymous"
+        />
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+        let url = "https://paginas-web-cr.com/Api/apis/";
+        let listar = "ListaUsuarios.php";
+
+            $(document).ready(function () {
+
+                let datosTabla = document.querySelector('#datos');//Cuando es queryselector requiere el #
+
+
+                // $("p").click(function (e) { 
+                //     $(this).hide();
+                    
+                // });
+                $("#parrafo1").click(function (e) { 
+                    $(this).hide();
+                    
+                });
+
+                $(".parrafo12").click(function (e) { 
+                    $(this).hide();
+                    
+                });
+
+                $("#mostrar").click(function (e) { 
+                    $("#parrafo1").show();
+                    $(".parrafo12").show();
+                    
+                });
+                $("#estilos").click(function (e) { 
+                    $("#estilos").addClass("btn btn-primary");
+                    $("body").addClass("bg-dark");
+                });
+                $("#remover").click(function (e) { 
+                    $("#estilos").removeClass("btn btn-primary");
+                    $("body").removeClass("bg-dark");
+                });
+
+
+                cargarDatos();
+
+                //funciones
+                                    
+                    function cargarDatos(){
+
+                        $.ajax({
+                            type: "POST",
+                            url:  url + listar,
+                            
+                            dataType: "json",
+                            success: function (response) {
+                                mostrarDatos(response);
+                            },
+                            error: function (jqXHR, textStatus, errorThrown) {
+                                console.log(errorThrown);
+                            },
+                            beforeSend: function (jqXHR){
+                                alert("Trayendo datos");
+                            },
+                            complete: function(jqXHR){
+                                alert("Carga completa datos");
+                            }
+
+                        });
+
+
+
+                    }
+
+                    function mostrarDatos(datos){
+                        console.log(datos);
+                        
+                        if(datos.code == 200){
+                            for (const iterator of datos.data) {  
+                            //onclick="editar('${iterator.id}', '${iterator.name}', '${iterator.password}', '${iterator.email}')"
+                                datosTabla.innerHTML += `
+                                    <tr class="">
+                                        <td>
+                                        <a
+                                            name=""
+                                            id=""
+                                            class="btn btn-success"
+                                            onclick="editar('${encodeURIComponent(JSON.stringify(iterator))}')"
+                                            role="button"
+                                            ><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-edit"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" /><path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" /><path d="M16 5l3 3" /></svg></a
+                                        >                    
+                                        
+                                        <a
+                                            name=""
+                                            id=""
+                                            class="btn btn-danger"                        
+                                            role="button"
+                                            onclick="eliminar('${iterator.id}')"
+                                            ><svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-eraser"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M19 20h-10.5l-4.21 -4.3a1 1 0 0 1 0 -1.41l10 -10a1 1 0 0 1 1.41 0l5 5a1 1 0 0 1 0 1.41l-9.2 9.3" /><path d="M18 13.3l-6.3 -6.3" /></svg></a
+                                        >
+                                        </td>
+                                        <td scope="row">${iterator.id}</td>
+                                        <td>${iterator.name}</td>
+                                        <td>${iterator.email}</td>
+                                        <td>${iterator.password}</td>                    
+                                    </tr>
+                                    `;
+                            }
+                        }
+                        else{
+                            alert("Algo salio mal");
+                        }
+
+                        //document.getElementById("spinnerload").innerHTML = "";
+                    }
+
+
+            });
+
+
+        </script>
+    </head>
+
+    <body>
+        <header>
+            <!-- place navbar here -->
+        </header>
+        <main>
+            <div class="bg-dark ">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel veniam omnis libero labore distinctio? Necessitatibus rem dolores sunt cupiditate provident hic dolore officia repudiandae, dignissimos, facilis dolor? Quis, nostrum exercitationem?</p>
+            </div>
+            <div>
+                <button id="mostrar">mostrar</button>
+                <button id="estilos" name="estilos">Estilos</button>
+                <button id="remover">Remueve</button>
+            </div>
+            <p id="parrafo1">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit quidem voluptatem ut a omnis, ullam, saepe nam hic corrupti eligendi unde eum! Nisi repudiandae eius pariatur corrupti similique ab! Dicta?
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Omnis, possimus. Quasi laborum rerum, voluptate sint, tenetur esse ipsa facere placeat ullam sunt quas veritatis optio minima atque porro? Aspernatur, laudantium!
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, nam? Qui commodi autem vel! Magnam explicabo mollitia debitis doloremque. Iusto fuga tempora placeat sequi deleniti, beatae ipsa ducimus autem pariatur?
+            </p>
+            <p class="parrafo12">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus veritatis reiciendis ducimus placeat explicabo culpa ea velit sint consequuntur temporibus quo est obcaecati eveniet, aperiam voluptatem inventore. Temporibus, odit expedita!
+            </p>
+            <p id="parrafo13">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente cumque eius assumenda ullam aliquam deleniti fuga id totam. Dolorum natus facilis aut porro error perferendis facere quia ullam dolore culpa.
+            </p>
+            <div
+                class="container"
+            >
+            <div
+            class="table-responsive"
+        >
+            <table
+                class="table table-info"
+            >
+                <thead>
+                    <tr>
+                        <th scope="col">Acciones</th>
+                        <th scope="col">Id</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Password</th>
+                        
+                    </tr>
+                </thead>
+                <tbody id="datos">
+
+                </tbody>
+            </table>
+            
+        </div>
+            </div>
+            
+        </main>
+        <footer>
+            <!-- place footer here -->
+        </footer>
+        <!-- Bootstrap JavaScript Libraries -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+            crossorigin="anonymous"
+        ></script>
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+            integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+            crossorigin="anonymous"
+        ></script>
+    </body>
+</html>
