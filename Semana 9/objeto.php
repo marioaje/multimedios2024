@@ -1,26 +1,35 @@
 <?php
 
-    $texto = "Mi nombre es: ";
-    $numero = 123;
-    $decimal = 1.2;
-    $nombre = "Mario";
-    $arreglo  = array(12, "Mario", true, 1.29);
+    class Motocicleta{
 
+        public $modelo;
+        public $marca;
+        public $year;
+        public $color;
 
-    function imprimir(){
-        echo "Soy la funcion de impresion";
-    }
-    function suma($a, $b){
-        return $a + $b;
+        public function __construct($modelo, $marca, $year, $color){
+            $this->modelo = $modelo;
+            $this->marca = $marca;
+            $this->year = $year;
+            $this->color = $color;
+        }
+
+        public function setModelo($modelo){
+            $this->modelo = $modelo;
+        }
+
+        public function getModelo(){
+            return $this->modelo;
+        }
+
     }
 
 ?>
 
-
 <!doctype html>
 <html lang="en">
     <head>
-        <title>Inicio</title>
+        <title>Title</title>
         <!-- Required meta tags -->
         <meta charset="utf-8" />
         <meta
@@ -39,51 +48,26 @@
 
     <body>
         <header>
-     
-
-            
-            <?php
-
-
-                echo "<h2>Nuevo Texto desde php</h2>";
-                echo $texto , " ", $nombre;
-            ?>
-
-
+            <!-- place navbar here -->
         </header>
-        
-            <h1>Pagina de inicio</h1>
+        <main>
 
-            <?php
-                echo "Me permite imprimir en el html";
+    <?php
 
+        $mivariableobjeto = new Motocicleta(123, "KTM", 2024, "Naranja");
 
+        echo $mivariableobjeto->getModelo();
 
+        $mivariableobjeto->setModelo(39393);
 
+        var_dump($mivariableobjeto);
 
-                echo '
-                <div class="card text-start">
-                    <img class="card-img-top" src="holder.js/100px180/" alt="Title" />
-                    <div class="card-body">
-                        <h4 class="card-title">Title</h4>
-                        <p class="card-text">Body</p>
-                    </div>
-                </div>';
-
-                var_dump( $arreglo );
-            ?>
-
+    ?>
 
 
         </main>
         <footer>
             <!-- place footer here -->
-            <?php
-
-                imprimir();
-
-                echo suma(98,90);
-            ?>
         </footer>
         <!-- Bootstrap JavaScript Libraries -->
         <script

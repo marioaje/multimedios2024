@@ -4,23 +4,18 @@
     $numero = 123;
     $decimal = 1.2;
     $nombre = "Mario";
-    $arreglo  = array(12, "Mario", true, 1.29);
+    $nuevavariable =222;
 
 
-    function imprimir(){
-        echo "Soy la funcion de impresion";
-    }
-    function suma($a, $b){
-        return $a + $b;
-    }
+
+
 
 ?>
-
 
 <!doctype html>
 <html lang="en">
     <head>
-        <title>Inicio</title>
+        <title>Title</title>
         <!-- Required meta tags -->
         <meta charset="utf-8" />
         <meta
@@ -39,50 +34,19 @@
 
     <body>
         <header>
-     
-
-            
-            <?php
-
-
-                echo "<h2>Nuevo Texto desde php</h2>";
-                echo $texto , " ", $nombre;
-            ?>
-
-
+            <!-- place navbar here -->
         </header>
-        
-            <h1>Pagina de inicio</h1>
-
-            <?php
-                echo "Me permite imprimir en el html";
-
-
-
-
-
-                echo '
-                <div class="card text-start">
-                    <img class="card-img-top" src="holder.js/100px180/" alt="Title" />
-                    <div class="card-body">
-                        <h4 class="card-title">Title</h4>
-                        <p class="card-text">Body</p>
-                    </div>
-                </div>';
-
-                var_dump( $arreglo );
-            ?>
-
-
-
-        </main>
+        <main></main>
         <footer>
             <!-- place footer here -->
+
             <?php
 
-                imprimir();
+                function soylafuncion($texto, $numero, $decimal, $nombre, $nuevavariable){
+                    return $texto." ".$numero." ".$decimal." ".$nombre. " ".$nuevavariable;
+                }
 
-                echo suma(98,90);
+
             ?>
         </footer>
         <!-- Bootstrap JavaScript Libraries -->
@@ -97,5 +61,10 @@
             integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
             crossorigin="anonymous"
         ></script>
+
+
+        <?php
+            soylafuncion(1,2,3,4,true);
+        ?>
     </body>
 </html>

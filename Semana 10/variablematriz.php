@@ -1,26 +1,23 @@
 <?php
 
-    $texto = "Mi nombre es: ";
-    $numero = 123;
-    $decimal = 1.2;
-    $nombre = "Mario";
-    $arreglo  = array(12, "Mario", true, 1.29);
+    echo "Matrices <br>";
 
 
-    function imprimir(){
-        echo "Soy la funcion de impresion";
-    }
-    function suma($a, $b){
-        return $a + $b;
-    }
+    $personas = array( 
+        "Prof"    =>"Mario",
+        "Curso"   =>"Multimedios",
+        "Periodo" =>"2024",
+        "cantidad"=>40
+    );
+
+    
+
 
 ?>
-
-
 <!doctype html>
 <html lang="en">
     <head>
-        <title>Inicio</title>
+        <title>Title</title>
         <!-- Required meta tags -->
         <meta charset="utf-8" />
         <meta
@@ -39,51 +36,58 @@
 
     <body>
         <header>
-     
-
-            
-            <?php
-
-
-                echo "<h2>Nuevo Texto desde php</h2>";
-                echo $texto , " ", $nombre;
-            ?>
-
-
+            <!-- place navbar here -->
         </header>
+        <main>
+
         
-            <h1>Pagina de inicio</h1>
+<div
+    class="table-responsive"
+>
+    <table
+        class="table table-primary"
+    >
+        <thead>
+            <tr>
+                <th scope="col">Prof</th>
+                <th scope="col">Curso</th>
+                <th scope="col">Periodo</th>
+                <th scope="col">Cantidad</th>
+            </tr>
+        </thead>
+        <tbody>
+        
+        <?php
+            
+            echo "<tr>";
+                foreach($personas as $person){
+                    //echo "Valor: ".$person."<br/>";
+                    echo "<td>".$person."</td>";
+                }
 
-            <?php
-                echo "Me permite imprimir en el html";
+            echo "</tr>";
+        ?>
+            <!-- <!-- <tr class="">
+                <td scope="row">R1C1</td>
+                <td>R1C2</td>
+                <td>R1C3</td>
+            </tr> -->
+            <!-- <tr class="">
+                <td scope="row">Item</td>
+                <td>Item</td>
+                <td>Item</td>
+            </tr>  -->
+        </tbody>
+    </table>
+</div>
 
 
-
-
-
-                echo '
-                <div class="card text-start">
-                    <img class="card-img-top" src="holder.js/100px180/" alt="Title" />
-                    <div class="card-body">
-                        <h4 class="card-title">Title</h4>
-                        <p class="card-text">Body</p>
-                    </div>
-                </div>';
-
-                var_dump( $arreglo );
-            ?>
 
 
 
         </main>
         <footer>
             <!-- place footer here -->
-            <?php
-
-                imprimir();
-
-                echo suma(98,90);
-            ?>
         </footer>
         <!-- Bootstrap JavaScript Libraries -->
         <script
