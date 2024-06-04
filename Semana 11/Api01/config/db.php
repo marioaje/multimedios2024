@@ -19,7 +19,7 @@ class Database{
  
          return $this->conn;
     }
-
+//Comment
 }
 
 ?>
