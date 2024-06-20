@@ -9,6 +9,7 @@ const CursoList = () => {
     //declaracion de variables, arreglos
     const [cursos, setCursos] = useState([]);
     const [modalOpen, setModalOpen] = useState(false);
+    const [ cursoEditar, setCursoEditar] = useState(null);
 
     //Ejecuta funciones, renderiza la pantalla, ejecuta scripts
     useEffect(() =>{
@@ -33,11 +34,28 @@ const CursoList = () => {
     };
 
 
+    const toggleEditModal = (curso) =>{
+        setModalOpen(curso);
+    };
+
+
+
+    const guardar = async ()=>{
+        // similar al fect
+    }
     
 //https://paginas-web-cr.com/Api/apis/ListaCurso.php
     return ( 
 
         <div className='container'>
+
+<br></br><br></br><br></br>
+
+
+            <Button color='primary' onClick={() => toggleEditModal(true)}>
+                Agregar
+            </Button>
+
                 <table
                                 className="table table-info"
                             >
@@ -74,10 +92,24 @@ const CursoList = () => {
                         <Modal isOpen={modalOpen} >
                             <ModalHeader >Modal Curso</ModalHeader>
                             <ModalBody>
-                                <h1>Text</h1>
+                                <Label>Nombre</Label>
+                                <Input type="text" id="nombre" value={cursoEditar?.nombre || ''}></Input>
+                                <Label>Descripcion</Label>
+                                <Input type="text" id="descripcion" value={cursoEditar?.descripcion || ''}></Input>
+                                <Label>Tiempo</Label>
+                                <Input type="text" id="tiempo" value={cursoEditar?.tiempo || ''}></Input>
+                                <Label>Usuario</Label>
+                                <Input type="text" id="usuario" value={cursoEditar?.usuario || ''}></Input>                                                                                                                                                             
                             </ModalBody>
                             <ModalFooter>
-                                
+                            <Button color='success' onClick={guardar}>
+                                Guardar
+                            </Button>
+                            <Button color='danger' onClick={() => toggleEditModal(false)}>
+                                Cerrar
+                            </Button>
+
+
                             </ModalFooter>
                         </Modal>
         </div>
