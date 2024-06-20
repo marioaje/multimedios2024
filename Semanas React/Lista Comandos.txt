@@ -1,0 +1,22 @@
+Permite instalar react 
+    npm install -g create-react-app
+Genera la estructura del proyecto 
+    npx create-react-app proyectofina
+Inicia el proyecto
+    npm start
+React Bootstrap
+    site: https://react-bootstrap.netlify.app/docs/components/accordion
+Instalar bbostrap
+    npm install bootstrap    
+
+
+App.js
+    Agregar el import 'bootstrap/dist/css/bootstrap.min.css';    
+
+
+
+Script de ejecucion
+
+    db.createCollection("clientes") 
+
+    db.clientes.insertOne({cedula: "0103210572",nombre:"Carlos",apellido1:"Rojas",apellido2:"Mata", genero:"M",fecha_nacimiento:ISODate("1993-01-15"),estado_civil:"C",correo: "rojas010321@gmail.com",dirección_residencia: "San Pedro Montes de Oca",fecha_registro:ISODate("2022-01-15")}); 
