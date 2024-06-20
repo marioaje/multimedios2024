@@ -1,14 +1,21 @@
 import React, { useEffect, useState } from 'react';
+import {
+        Button, Modal, ModalHeader, ModalBody, 
+        ModalFooter, Form, FormGroup, Label, Input 
+    } from 'reactstrap';
 
 const CursoList = () => {
 
     //declaracion de variables, arreglos
     const [cursos, setCursos] = useState([]);
+    const [modalOpen, setModalOpen] = useState(false);
 
     //Ejecuta funciones, renderiza la pantalla, ejecuta scripts
     useEffect(() =>{
         fetchCursos();
     }, []);
+
+    
 
     //Declarar funciones.
     const fetchCursos = () =>{
@@ -63,7 +70,18 @@ const CursoList = () => {
 
                                 </tbody>
                             </table>
+
+                        <Modal isOpen={modalOpen} >
+                            <ModalHeader >Modal Curso</ModalHeader>
+                            <ModalBody>
+                                <h1>Text</h1>
+                            </ModalBody>
+                            <ModalFooter>
+                                
+                            </ModalFooter>
+                        </Modal>
         </div>
+
 
 
       );
