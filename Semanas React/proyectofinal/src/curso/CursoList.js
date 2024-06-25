@@ -4,6 +4,8 @@ import {
         ModalFooter, Form, FormGroup, Label, Input 
     } from 'reactstrap';
 
+import CursoModal from './CursoModal';
+
 const CursoList = () => {
 
     //declaracion de variables, arreglos
@@ -35,7 +37,8 @@ const CursoList = () => {
 
 
     const toggleEditModal = (curso) =>{
-        setModalOpen(curso);
+        console.log("test");
+        //setModalOpen(true);
     };
 
 
@@ -43,6 +46,12 @@ const CursoList = () => {
     const guardar = async ()=>{
         // similar al fect
     }
+
+    //Permite abri modal desde otro componente.
+    const toggleModal =() =>{
+        setModalOpen(!modalOpen);
+    }
+
     
 //https://paginas-web-cr.com/Api/apis/ListaCurso.php
     return ( 
@@ -52,8 +61,8 @@ const CursoList = () => {
 <br></br><br></br><br></br>
 
 
-            <Button color='primary' onClick={() => toggleEditModal(true)}>
-                Agregar
+            <Button color='primary' onClick={() => toggleEditModal(null)}>
+                Agregar Curso
             </Button>
 
                 <table
@@ -112,6 +121,11 @@ const CursoList = () => {
 
                             </ModalFooter>
                         </Modal>
+
+
+
+        <CursoModal isOpen={modalOpen} toggleModal={toggleModal} onCursoInsert={fetchCursos}></CursoModal>
+
         </div>
 
 
