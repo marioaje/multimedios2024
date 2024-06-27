@@ -16,6 +16,7 @@ const CursoModal = ({isOpen, toggleModal, onCursoInsert, cursoEditar, isEditar})
     const [ usuario, setUsuario ] = useState('') ;
     const [ id, setId ] = useState('') ;
     
+    
 
     useEffect( () => {
         if (cursoEditar){

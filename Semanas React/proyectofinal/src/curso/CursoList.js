@@ -12,6 +12,7 @@ const CursoList = () => {
     const [cursos, setCursos] = useState([]);
     const [modalOpen, setModalOpen] = useState(false);
     const [ cursoEditar, setCursoEditar] = useState(null);
+    const [ isEditar, setIsEditar] = useState(false);
 
     //Ejecuta funciones, renderiza la pantalla, ejecuta scripts
     useEffect(() =>{
@@ -37,8 +38,15 @@ const CursoList = () => {
 
 
     const toggleEditModal = (curso) =>{
-        console.log("test");
-        //setModalOpen(true);
+        setCursoEditar(curso);
+
+        if(curso){
+            setIsEditar(true);
+        }else{
+            setIsEditar(false);
+        }
+
+        setModalOpen(true);
     };
 
 
@@ -49,6 +57,7 @@ const CursoList = () => {
 
     //Permite abri modal desde otro componente.
     const toggleModal =() =>{
+
         setModalOpen(!modalOpen);
     }
 
@@ -77,6 +86,7 @@ const CursoList = () => {
                                         <th scope="col">Descripcion</th>
                                         <th scope="col">Tiempo</th>
                                         <th scope="col">Usuario</th>
+                                        <th scope="col">Acciones</th>
                                         
                                     </tr>
                                 </thead>
@@ -90,6 +100,10 @@ const CursoList = () => {
                                                     <td>{curso.descripcion}</td>
                                                     <td>{curso.tiempo}</td>
                                                     <td>{curso.usuario}</td>
+                                                    <td>
+                                                        <Button color='primary' onClick={()=>toggleEditModal(curso)}>Editar</Button>
+
+                                                    </td>
                                                 </tr>
                                         ))
                                     }
@@ -98,7 +112,7 @@ const CursoList = () => {
                                 </tbody>
                             </table>
 
-                        <Modal isOpen={modalOpen} >
+                        {/* <Modal isOpen={modalOpen} >
                             <ModalHeader >Modal Curso</ModalHeader>
                             <ModalBody>
                                 <Label>Nombre</Label>
@@ -120,11 +134,18 @@ const CursoList = () => {
 
 
                             </ModalFooter>
-                        </Modal>
+                        </Modal> */}
 
 
 
-        <CursoModal isOpen={modalOpen} toggleModal={toggleModal} onCursoInsert={fetchCursos}></CursoModal>
+        <CursoModal 
+            isOpen={modalOpen} 
+            toggleModal={toggleModal} 
+            onCursoInsert={fetchCursos}
+            isEditar={isEditar}
+            cursoEditar={cursoEditar}
+            >
+        </CursoModal>
 
         </div>
 
